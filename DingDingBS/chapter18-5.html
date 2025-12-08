@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18.5 类 - HTML5+CSS3+ES6 前端开发从入门到实战</title>
+    <style>
+        /* 还原书本纸质排版，匹配书籍阅读体验 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "宋体", "Microsoft YaHei", serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            background-color: #f9f5f0; /* 书本泛黄底色 */
+            padding: 40px 60px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        /* 书眉：书名+作者信息 */
+        .book-header {
+            border-bottom: 1px solid #c8c0b4;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3a3a3a;
+        }
+        .book-author {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        /* 章节标题样式 */
+        .chapter-main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 25px;
+            border-left: 4px solid #8b7865;
+            padding-left: 15px;
+        }
+        .chapter-subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3a3a3a;
+            margin: 22px 0 12px;
+        }
+        /* 正文段落 */
+        .book-paragraph {
+            font-size: 16px;
+            margin: 12px 0;
+            text-indent: 2em; /* 首行缩进2字符，还原书本排版 */
+        }
+        /* 代码块样式：模拟书本代码展示 */
+        .code-block {
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 14px;
+            background-color: #f0ede6;
+            border-left: 3px solid #8b7865;
+            padding: 12px 18px;
+            margin: 15px 0;
+            white-space: pre-wrap; /* 自动换行，保留代码格式 */
+            color: #2d2d2d;
+        }
+        /* 行内代码 */
+        .inline-code {
+            font-family: "Consolas", monospace;
+            font-size: 15px;
+            background-color: #f0ede6;
+            padding: 2px 5px;
+            border-radius: 2px;
+        }
+        /* 页码：书本底部页码样式 */
+        .book-footer {
+            border-top: 1px solid #c8c0b4;
+            padding-top: 10px;
+            margin-top: 35px;
+            text-align: right;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- 书眉信息 -->
+    <div class="book-header">
+        <div class="book-title">HTML5+CSS3+ES6 前端开发从入门到实战</div>
+        <div class="book-author">张树明 著</div>
+    </div>
+
+    <!-- 章节主标题 -->
+    <h1 class="chapter-main-title">18.5 类</h1>
+
+    <!-- 正文内容 -->
+    <p class="book-paragraph">
+        ECMAScript传统方法是通过构造函数生成实例对象，为了更接近大多数面向对象语言的写法，引入了类（Class）这个概念，通过<span class="inline-code">class</span>关键字，可以定义类。
+    </p>
+
+    <!-- 子标题：定义类 -->
+    <h2 class="chapter-subtitle">18.5.1 定义类</h2>
+    <p class="book-paragraph">
+        定义类有两种方式：类声明和类表达式。
+    </p>
+
+    <!-- 子标题：类声明 -->
+    <h2 class="chapter-subtitle">1. 类声明</h2>
+    <p class="book-paragraph">
+        <span class="inline-code">class</span>声明创建一个基于原型继承的具有给定名称的新类，类声明不允许再次声明已经存在的类，否则将抛出一个类型错误。语法如下。
+    </p>
+    <div class="code-block">
+class name [extends] {
+  // class body
+}
+    </div>
+    <p class="book-paragraph">
+        下面的代码中，定义了一个名为<span class="inline-code">Point</span>的类，其中有一个构造方法<span class="inline-code">constructor()</span>，还定义了一个<span class="inline-code">toString()</span>方法。定义<span class="inline-code">toString()</span>方法时不需要加上<span class="inline-code">function</span>关键字，方法和方法之间不需要逗号分隔，加了会报错。
+    </p>
+    <div class="code-block">
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  toString() {
+    return '(' + this.x + ', ' + this.y + ')';
+  }
+}
+    </div>
+    <p class="book-paragraph">
+        使用时，直接对类使用<span class="inline-code">new</span>命令生成类的对象实例，而且类必须使用<span class="inline-code">new</span>运算符调用，否则会报错。
+    </p>
+    <div class="code-block">
+var p1 = new Point(1, 2);
+p1
+//Point {x: 1, y: 2}
+p1.toString(); //"(1, 2)"
+    </div>
+
+    <p class="book-paragraph">
+        <span class="inline-code">constructor()</span>方法是类的默认方法，通过<span class="inline-code">new</span>命令生成对象实例时，自动调用该方法。一个类必须有<span class="inline-code">constructor()</span>方法，如果没有显式定义，默认会添加一个空的<span class="inline-code">constructor()</span>方法。
+    </p>
+    <p class="book-paragraph">//等同于</p>
+    <div class="code-block">
+class Point {
+  constructor() {
+  }
+}
+    </div>
+    <p class="book-paragraph">
+        上述代码中，定义了一个空的<span class="inline-code">Point</span>类，JavaScript引擎会自动添加一个空的<span class="inline-code">constructor()</span>方法。
+    </p>
+    <p class="book-paragraph">
+        类与构造函数一样，也有<span class="inline-code">prototype</span>属性，类的所有方法都定义在类的<span class="inline-code">prototype</span>属性上，在类的实例上调用方法，其实就是调用原型上的方法。
+    </p>
+    <div class="code-block">
+class Point {
+  constructor() {
+    //...
+  }
+  toString() {
+    //...
+  }
+}
+//等同于
+Point.prototype = {
+  constructor() {},
+  toString() {},
+};
+    </div>
+    <p class="book-paragraph">
+        上述代码中，<span class="inline-code">constructor()</span>和<span class="inline-code">toString()</span>方法其实都定义在<span class="inline-code">Point.prototype</span>上。
+    </p>
+    <p class="book-paragraph">
+        类的新方法可以添加在<span class="inline-code">prototype</span>对象上面，可以使用<span class="inline-code">Object.assign()</span>方法向类添加多个方法。
+    </p>
+    <div class="code-block">
+class Point {
+  constructor() {
+    //...
+  }
+}
+Object.assign(Point.prototype, {
+  toString() {},
+  toValue() {}
+});
+    </div>
+    <p class="book-paragraph">
+        类的内部所有定义的方法，都是不可枚举的（Non-enumerable）。这一点与传统的构造函数行为不一致。
+    </p>
+    <p class="book-paragraph">
+        实例属性除了定义在<span class="inline-code">constructor()</span>方法的<span class="inline-code">this</span>上面，也可以定义在类的最顶层。
+    </p>
+    <div class="code-block">
+class Point {
+  x = 0;
+  y = 0;
+  toString() {
+    return '(' + this.x + ', ' + this.y + ')';
+  }
+}
+var p1 = new Point();
+p1.toString(); //"(0, 0)"
+    </div>
+    <p class="book-paragraph">
+        类的属性名可以采用表达式。
+    </p>
+    <div class="code-block">
+let methodName = 'getArea';
+class Square {
+  constructor(length) {
+    //...
+  }
+  [methodName]() {
+    //...
+  }
+}
+    </div>
+
+    <!-- 页码 -->
+    <div class="book-footer">
+        页码：358-359
+    </div>
+</body>
+</html>

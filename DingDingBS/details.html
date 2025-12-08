@@ -5,12 +5,20 @@
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>购物车</title>
+<title>详细内容</title>
 <link rel="stylesheet" href="css/style.css">
   <meta name="keywords" content="网上书店,计算机,前端技术">
 <meta name="description" content="叮叮书店是销售信息技术及相关图书的垂直网站">
   <meta name="robots" content="index,follow">
 <link rel="icon" href="images/favicon.ico">
+<style>
+  @media screen and (max-width: 360px) {
+    /* 内容顶部不显示 */
+    #main-content-top {
+      display: none;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -192,7 +200,7 @@
 
 <!-- 面包屑导航 -->
 
-<section id="crumb-nav">您现在的位置: <a href="index.html">首页</a>&gt;</section>
+<section id="crumb-nav">您现在的位置: <a href="index.html">首页</a>&gt;详细内容</section>
 
 <!-- 主要内容 -->
 <div id="main-content">
@@ -203,49 +211,96 @@
 <!-- here -->
 
 
- <section class="cart-table">
-        <h3><span class="icon-cart"></span>购物车</h3>
-        <table>
-            <tr>
-                <th colspan="2" scope="col">书名</th>
-                <th scope="col">单价</th>
-                <th scope="col">数量</th>
-                <th scope="col">合计</th>
-            </tr>
-            <tr>
-                <td><a href="details.html"><img src="imges/recommend1.jpg" alt="封面"/></a></td>
-                <td>
-                    <h4>《Web前端设计从入门到实战--HTML5、CSS3、JavaScript 项目案例开发》</h4>
-                </td>
-                <td>100.00</td>
-                <td>1</td>
-                <td>100.00</td>
-            </tr>
-            <tr>
-                <td><a href="details.html"><img src="imges/recommend2.jpg" alt="封面"/></a></td>
-                <td>
-                    <h4>《最强Android 架构大剖析》</h4>
-                </td>
-                <td>100.00</td>
-                <td>1</td>
-                <td>100.00</td>
-            </tr>
-            <tr>
-                <td><a href="details.html"><img src="imges/recommend3.png" alt="封面"></a></td>
-                <td>
-                    <h4>《Spring Boot开发实战》</h4>
-                </td>
-                <td>100.00</td>
-                <td>1</td>
-                <td>100.00</td>
-            </tr>
-            <tr>
-                <td colspan="5">
-                    <div>3件商品总价(不含运费):¥300.00<a href="#">去结算</a></div>
-                </td>
-            </tr>
-        </table>
+
+
+
+
+
+  <div class="title-bar">
+    <div class="bdsharebuttonbox">
+      <a href="#" class="bds_more" data-cmd="more"></a>
+      <a href="#" class="bds_qzone" data-cmd="qzone"></a>
+      <a href="#" class="bds_tsina" data-cmd="tsina"></a>
+      <a href="#" class="bds_tqq" data-cmd="tqq"></a>
+      <a href="#" class="bds_renren" data-cmd="renren"></a>
+      <a href="#" class="bds_weixin" data-cmd="weixin"></a>
+    </div>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "2",
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16"
+      },
+      "share": {},
+      "image": {
+        "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "selectShare": {
+        "bdContainerClass": null,
+        "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]
+      }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  </script>
+
+  <article>
+    <section class="information">
+      <div class="information-cover">
+        <img src="imges/cover.jpg" alt="">
+      </div>
+      <div class="information-title">
+        <h3>Web前端设计从入门到实战——HTML5、CSS3、JavaScript项目案例开发</h3>
+        <ul>
+          <li>叮叮价：¥69.60</li>
+          <li>定价：<del>¥79.50</del></li>
+          <li>库存：<strong>暂时缺货</strong></li>
+          <li>作者：张树明</li>
+          <li>出版社：清华大学出版社</li>
+          <li>出版时间：2019-4-1</li>
+          <li>页数：474，字数：748000</li>
+          <li>纸张：胶版纸</li>
+          <li>ISBN：9787302516286</li>
+          <li>包装：平装</li>
+        </ul>
+        <div>
+          <a href="read.html" class="read">试读</a>
+        </div>
+      </div>
     </section>
+
+    <section class="information-content">
+      <h4>编辑推荐</h4>
+      <p>零基础品质实战：全书以一个完整的真实案例“叮叮书店”贯穿讲解知识点。视频教学，全程语音讲解，600分钟高清配套教学视频。丰富的教学资源：教学课件，源代码，答案和教学大纲。</p>
+      <h4>内容简介</h4>
+      <p>本书基于Web标准和响应式Web设计思想深入浅出地介绍了Web前端设计技术的基础知识，对Web体系结构、HTML5、CSS3、JavaScript和网站制作流程进行了详细的讲解，内容翔实，结构合理，语言精练，表达简明，实用性强，易于自学。
+        全书共分23章。第1章介绍了Web技术的基本概念、Web体系结构、超文本与标记语言、Web标准的组成和常用浏览器；第2~7章重点介绍了Web标准的结构标准HTML5的常用元素的标签语法及应用；第8~13章介绍了Web标准的表现标准CSS3的常用属性及应用；第14章介绍了网站制作流程与发布过程；第15~22章介绍了Web标准的行为标准ECMA-262的ECMAScript基础和JavaScript脚本语言；第23章介绍了JavaScript框架jQuery的入门知识。扫描每章提供的二维码可观看知识点的视频讲解及下载程序源码。</p>
+    </section>
+
+    <section class="information-context">
+      <h4>相关阅读</h4>
+      <div>
+        <div>上一篇：<a href="#">《JavaScript权威指南》</a></div>
+        <div>下一篇：<a href="#">《HTML5+CSS3从入门到精通》</a></div>
+      </div>
+    </section>
+  </article>
+
+
+
+
+
+
+
+
+
+
 
 
 

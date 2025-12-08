@@ -483,3 +483,105 @@ display: flex;justify-content: center;align-items: center;}
 .send {color: hsl(0, 0%, 100%); height: 30px; width: 60px; text-align: center; background-color:hsl(85, 55%, 50%);border: 0px;font-size:1rem; }
 #message{visibility: hidden;}
 #submitmessage{padding: 12px;font-size: 1rem;}
+
+/* 详细内容 details.html */
+.title-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+.information {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 12px;
+}
+.information-cover {
+  flex: 1;
+  margin-right: 12px;
+}
+.information-title {
+  flex: 2;
+}
+.information-content p {
+  border: hsl(85, 55%, 40%) 1px solid;
+  border-radius: 6px;
+  margin: 12px 0px;
+  padding: 12px;
+}
+.information-title h3 {
+  text-align: center;
+  margin: 12px;
+}
+.information-title div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.information-content div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.read {
+  background-color: hsl(85, 55%, 50%);
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  padding: 6px 36px;
+}
+.read:hover {
+  color: hsl(0, 100%, 100%);
+}
+
+/* 屏幕宽度小于或等于720px */
+@media screen and (max-width: 720px) {
+  .information {
+    flex-flow: column wrap;
+  }
+}
+
+/* 购物车 cart.html */
+.cart-table h3 {
+  margin: 1rem 0;
+}
+/* 表格合并边框 */
+.cart-table table {
+  font-size: 1.2rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0px;
+}
+.cart-table tr,
+.cart-table td {
+  border: 1px solid hsl(85, 55%, 50%);
+}
+.cart-table td h4 {
+  font-size: 1rem;
+}
+.cart-table img {
+  width: 60px;
+  height: 60px;
+}
+.cart-table td:first-child {
+  text-align: center;
+}
+.cart-table td:nth-child(5),
+.cart-table td:nth-child(4),
+.cart-table td:nth-child(3) {
+  text-align: right;
+  padding-right: 5px;
+}
+.cart-table tr:last-child a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-left: 20px;
+}
+.cart-table tr:last-child a:hover {
+  color: hsl(85, 55%, 50%);
+}
+/* 表格第1行和最后一行背景色 */
+.cart-table tr:first-child,
+.cart-table tr:last-child {
+  line-height: 40px;
+  text-align: center;
+}

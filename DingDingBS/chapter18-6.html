@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18.6 模块 - HTML5+CSS3+ES6 前端开发从入门到实战</title>
+    <style>
+        /* 延续书本统一排版风格，保持视觉一致性 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "宋体", "Microsoft YaHei", serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            background-color: #f9f5f0; /* 书本泛黄底色 */
+            padding: 40px 60px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        /* 书眉：书名+作者信息，与18.5章节保持一致 */
+        .book-header {
+            border-bottom: 1px solid #c8c0b4;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3a3a3a;
+        }
+        .book-author {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        /* 章节标题样式 */
+        .chapter-main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 25px;
+            border-left: 4px solid #8b7865;
+            padding-left: 15px;
+        }
+        .chapter-subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3a3a3a;
+            margin: 22px 0 12px;
+        }
+        /* 正文段落 */
+        .book-paragraph {
+            font-size: 16px;
+            margin: 12px 0;
+            text-indent: 2em; /* 首行缩进2字符，还原书本排版 */
+        }
+        /* 代码块样式：模拟书本代码展示 */
+        .code-block {
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 14px;
+            background-color: #f0ede6;
+            border-left: 3px solid #8b7865;
+            padding: 12px 18px;
+            margin: 15px 0;
+            white-space: pre-wrap; /* 自动换行，保留代码格式 */
+            color: #2d2d2d;
+        }
+        /* 行内代码 */
+        .inline-code {
+            font-family: "Consolas", monospace;
+            font-size: 15px;
+            background-color: #f0ede6;
+            padding: 2px 5px;
+            border-radius: 2px;
+        }
+        /* 列表样式：还原书本列表排版 */
+        .book-list {
+            margin: 12px 0 12px 2em;
+            font-size: 16px;
+        }
+        .book-list li {
+            margin: 8px 0;
+        }
+        /* 页码：书本底部页码样式 */
+        .book-footer {
+            border-top: 1px solid #c8c0b4;
+            padding-top: 10px;
+            margin-top: 35px;
+            text-align: right;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- 书眉信息：与18.5章节保持统一 -->
+    <div class="book-header">
+        <div class="book-title">HTML5+CSS3+ES6 前端开发从入门到实战</div>
+        <div class="book-author">张树明 著</div>
+    </div>
+
+    <!-- 章节主标题 -->
+    <h1 class="chapter-main-title">18.6 模块</h1>
+
+    <!-- 正文内容 -->
+    <p class="book-paragraph">
+        模块（Module）不是对象，是通过<span class="inline-code">export</span>命令显式指定导出的代码，再通过<span class="inline-code">import</span>命令导入，无论是否声明了<span class="inline-code">strict mode</span>，模块都运行在严格模式下，如：
+    </p>
+    <div class="code-block">
+import { stat, exists, readFile } from 'fs';
+    </div>
+    <p class="book-paragraph">
+        上述代码从<span class="inline-code">fs</span>模块加载3个方法，其他方法不加载。这种加载称为编译时加载或静态加载，即可以在编译时就完成模块加载。
+    </p>
+    <p class="book-paragraph">
+        模块功能主要由两个命令构成：<span class="inline-code">export</span>和<span class="inline-code">import</span>。<span class="inline-code">export</span>用于规定模块的对外接口；<span class="inline-code">import</span>用于输入其他模块提供的功能。
+    </p>
+
+    <!-- 子标题：export语句 -->
+    <h2 class="chapter-subtitle">18.6.1 export语句</h2>
+    <p class="book-paragraph">
+        模块是一个独立的文件，文件内部的所有变量，外面无法获取，如果希望在外面能够读取模块内部的变量，必须使用<span class="inline-code">export</span>。
+    </p>
+    <p class="book-paragraph">
+        <span class="inline-code">export</span>语句用于从模块中导出实时绑定的函数、对象或原始值，以便其他程序可以通过<span class="inline-code">import</span>语句使用它们。
+    </p>
+    <p class="book-paragraph">
+        <span class="inline-code">export</span>有两种导出方式：
+    </p>
+    <ul class="book-list">
+        <li>① 命名导出：每个模块可以定义多个命名导出</li>
+        <li>② 默认导出：每个模块只能定义一个默认导出</li>
+    </ul>
+    <p class="book-paragraph">语法如下：</p>
+    <div class="code-block">
+// 导出单个
+export let name1, name2, …, nameN;
+export let name1 = …, name2 = …, …, nameN;
+export function FunctionName(){...}
+export class ClassName {...}
+
+// 导出列表
+export { name1, name2, …, nameN };
+
+// 重命名导出
+export { variable1 as name1, variable2 as name2, …, nameN };
+
+// 默认导出
+export default expression;
+export default function (...) { ... }
+export default function name1(...) { ... }
+export { name1 as default, ... };
+    </div>
+    <p class="book-paragraph">
+        <span class="inline-code">nameN</span>参数表示要导出的标识符；<span class="inline-code">export</span>命令规定的是对外接口，必须与模块内部导出的变量建立一一对应关系，也可以使用<span class="inline-code">as</span>关键字重命名。
+    </p>
+    <p class="book-paragraph">
+        在导入期间使用时，必须和导出命名一致。但可以使用任何名称导入默认导出。
+    </p>
+
+    <p class="book-paragraph">示例代码：</p>
+    <div class="code-block">
+// test.js
+let k;
+export default k = 12;
+
+// 在另一个文件导入
+import m from './test';
+console.log(m); // 12
+    </div>
+    <p class="book-paragraph">
+        上述代码中，<span class="inline-code">k</span>是默认导出，可以使用<span class="inline-code">import m</span>替代<span class="inline-code">import k</span>。
+    </p>
+
+    <!-- 子标题：import语句 -->
+    <h2 class="chapter-subtitle">18.6.2 import语句</h2>
+    <p class="book-paragraph">
+        静态的<span class="inline-code">import</span>语句用于导入由另一个模块导出的绑定。<span class="inline-code">import</span>语句只能在声明了<span class="inline-code">&lt;script type="module"&gt;</span>标签中使用。语法如下：
+    </p>
+    <div class="code-block">
+// 导入默认导出
+import defaultExport from "module-name";
+
+// 导入整个模块的内容（命名空间导入）
+import * as name from "module-name";
+
+// 导入多个命名导出
+import { export1, export2 } from "module-name";
+import { export1 as alias1, export2 as alias2 } from "module-name";
+
+// 导入默认导出和命名导出的组合
+import defaultExport, { export1, export2 } from "module-name";
+import defaultExport, * as name from "module-name";
+    </div>
+    <p class="book-paragraph">
+        其中，<span class="inline-code">defaultExport</span>表示模块的默认导出；<span class="inline-code">module-name</span>表示要导入的模块路径（可以是相对路径或模块名）；<span class="inline-code">name</span>表示导入模块的命名空间，通过该命名空间可以访问模块的所有导出成员。
+    </p>
+
+    <!-- 页码：与18.5章节页码衔接 -->
+    <div class="book-footer">
+        页码：360-361
+    </div>
+</body>
+</html>
